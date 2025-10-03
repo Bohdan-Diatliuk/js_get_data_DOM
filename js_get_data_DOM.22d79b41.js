@@ -1,0 +1,2 @@
+"use strict";var getSelectorSpan=document.querySelectorAll("span.population"),numbers=[];getSelectorSpan.forEach(function(e){var t=Number(e.innerText.replace(/[^\d]/g,""));isNaN(t)||numbers.push(t)});var total=numbers.reduce(function(e,t){return e+t},0),average=total/numbers.length,totalFormat=total.toLocaleString("en-US"),averageFormat=average.toLocaleString("en-US");document.querySelector("span.total-population").innerText=totalFormat,document.querySelector("span.average-population").innerText=averageFormat;
+//# sourceMappingURL=js_get_data_DOM.22d79b41.js.map
