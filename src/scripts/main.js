@@ -7,9 +7,9 @@ const numbers = [];
 getSelectorSpan.forEach((span) => {
   const text = span.textContent.trim();
 
-  const cleaned = text.replace(/[, ]/g, '');
+  const cleaned = text.replace(/[\u00A0,\s]/g, '');
 
-  if (/^\d+(\.\d+)?&/.test(cleaned)) {
+  if (/^\d+(?:\.\d+)?$/.test(cleaned)) {
     const number = Number(cleaned);
 
     numbers.push(number);
@@ -21,7 +21,7 @@ if (numbers.length > 0) {
   const average = total / numbers.length;
 
   const totalFormat = total.toLocaleString('en-US');
-  const averageFormat = Math.round(average).toLocaleString('en-US');
+  const averageFormat = average.toLocaleString('en-US');
 
   document.querySelector('span.total-population').textContent = totalFormat;
   document.querySelector('span.average-population').textContent = averageFormat;
