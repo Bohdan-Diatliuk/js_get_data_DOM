@@ -5,19 +5,27 @@ const getSelectorSpan = document.querySelectorAll('span.population');
 const numbers = [];
 
 getSelectorSpan.forEach((span) => {
-  const text = span.innerText;
-  const number = Number(text.replace(/[^\d]/g, ''));
+  const text = span.textContent.trim();
 
-  if (!isNaN(number)) {
+  const cleaned = text.replace(/[, ]/g, '');
+
+  if (/^\d+(\.\d+)?&/.test(cleaned)) {
+    const number = Number(cleaned);
+
     numbers.push(number);
   }
 });
 
-const total = numbers.reduce((a, b) => a + b, 0);
-const average = total / numbers.length;
+if (numbers.length > 0) {
+  const total = numbers.reduce((a, b) => a + b, 0);
+  const average = total / numbers.length;
 
-const totalFormat = total.toLocaleString('en-US');
-const averageFormat = average.toLocaleString('en-US');
+  const totalFormat = total.toLocaleString('en-US');
+  const averageFormat = Math.round(average).toLocaleString('en-US');
 
-document.querySelector('span.total-population').innerText = totalFormat;
-document.querySelector('span.average-population').innerText = averageFormat;
+  document.querySelector('span.total-population').textContent = totalFormat;
+  document.querySelector('span.average-population').textContent = averageFormat;
+} else {
+  document.querySelector('span.total-population').textContent = '';
+  document.querySelector('span.average-population').textContent = '';
+}
