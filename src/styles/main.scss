@@ -1,7 +1,7 @@
 @import 'fonts';
 
 body {
-  background: #eee;
+  background: #fff;
   display: flex;
   margin: 0;
   width: 100vw;
@@ -22,7 +22,7 @@ h1 {
   padding: 0;
   &__item {
     margin: 8px;
-    border-bottom: 1px solid darkgrey;
+    border-bottom: 1px solid rgb(24, 24, 24);
     display: flex;
     justify-content: space-between;
     padding: 4px 4px 4px 30px;
@@ -33,7 +33,7 @@ h1 {
     }
 
     &::before {
-      color: #565754;
+      color: #000;
       counter-increment: section;
       content: counter(section);
       position: absolute;
